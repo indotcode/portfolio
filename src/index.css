@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  font-family: -apple-system, 'Roboto',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #000000;
+}
+
+.conteiner{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+.wrap{
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -17px;
+  margin-right: -17px;
+}
+
+.wrap-cel{
+  margin: 17px;
+}

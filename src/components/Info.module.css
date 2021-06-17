@@ -1,0 +1,95 @@
+.block{
+
+}
+
+.name{
+    font-size: 40px;
+    font-weight: 500;
+    cursor: default;
+    width: 300px;
+}
+
+.name:hover{
+    background: rgba(0, 0, 0, 0.06);
+}
+
+.description{
+    margin-top: 8px;
+    font-size: 16px;
+    cursor: default;
+    width: 300px;
+}
+
+.description:hover{
+    background: rgba(0, 0, 0, 0.06);
+}
+
+.sity{
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.sity img{
+    margin-right: 5px;
+}
+
+.tag{
+
+}
+
+.tag__list{
+    display: flex;
+    align-items: center;
+    margin: 8px -4px -4px -4px;
+}
+
+.tag__item{
+    background-color: #333333;
+    border-radius: 4px;
+    color: #fff;
+    padding: 5px;
+    margin: 4px;
+    font-size: 14px;
+    position: relative;
+    cursor: default;
+}
+
+.tag__itemRemove{
+    position: absolute;
+    right: -6px;
+    top: -6px;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.tag__itemRemove span{
+    transform: rotate(45deg);
+}
+
+.tag__item:hover .tag__itemRemove{
+    transition: .3s;
+    opacity: 1;
+}
+
+.tag__plus{
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #333333;
+    border-radius: 4px;
+    margin: 4px;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+}
