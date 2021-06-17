@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Info.module.css';
 import flag from './../images/us.png';
 import {observer} from 'mobx-react';
-import store from '../store/index'; 
+import store from '../store/index';
+import Input from './Input';
 
 function Info (){
+    
+    const [activeTag, setActiveTag] = useState(0);
+
     return (
         <div className={styles.block}>
             <div className={styles.name}>       
-                <span>John Smith</span>
+                <span>{store.name}</span>
             </div>
-            <div className={styles.description}>
-                <span>Portland, Oregon, USA</span>
+            <div className={styles.address}>
+                <span>{store.address}</span>
             </div>
             <div className={styles.sity}>
                 <img src={flag} alt="" />
@@ -27,7 +31,14 @@ function Info (){
                             </span>
                         </div>
                     ))}
-                    <div className={styles.tag__plus}>+</div>
+                    {activeTag === 0 && 
+                        <div className={styles.tag__plus} onClick={() => setActiveTag(1)}>+</div>
+                    }
+                    {activeTag === 1 && 
+                        <div className={styles.tag__form}>
+                             <Input/>
+                        </div>
+                    }
                 </div>
             </div>
         </div>

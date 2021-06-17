@@ -9,22 +9,31 @@ class Store {
         {name: 'Java Script', year: 4.5}
     ];
 
+    name = 'John Smith';
+
+    address = 'Portland, Oregon, USA';
+
     constructor() {
         makeObservable(this, {
             tag: observable,
-            addTag: action,
+            name: observable,
+            address: observable,
+            saveInput: action,
             removeTag: action,
         })
     }
 
-    addTag(name){
-        this.tag.push({name: name, yesr: 0})
+    saveInput(name, string){
+        if(name === 'tag'){
+            this.tag.push({name: string, yesr: 0})
+        }
     }
     
     removeTag(id){
         this.tag.splice(id, 1)
-        console.log(id)
     }
+
+    edit
 }
 
 export default new Store();
