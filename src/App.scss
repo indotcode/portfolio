@@ -1,0 +1,19 @@
+.App-header{
+  background-color: #b3bac033;
+}
+
+.App-wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  &_spaceBetween{
+    justify-content: space-between;
+  }
+}
+
+.App-main{
+
+}
+
+.App-wrap{
+
+}

@@ -1,0 +1,19 @@
+.block{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #3483CC;
+    &::before{
+        content: "";
+        background-image: url('./../images/ic-print.png');
+        width: 25px;
+        height: 25px;
+        margin-right: 8px;
+    }
+    &:hover{
+        color: #eb5757;
+        &::before{
+            background-image: url('./../images/ic-print2.png');
+        }
+    }
+}

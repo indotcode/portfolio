@@ -1,30 +1,40 @@
-import React, { useState } from 'react';
-import styles from './Info.module.css';
+import React from 'react';
+import styles from './Info.module.scss';
 import flag from './../images/us.png';
 import {observer} from 'mobx-react';
 import store from '../store/index';
 import Input from './Input';
 
 function Info (){
-    
-    const [activeTag, setActiveTag] = useState(0);
-
-
     return (
         <div className={styles.block}>
-            <div className={styles.name}>       
-                <span>{store.name}</span>
-            </div>
-            <div className={styles.address}>
-                <span>{store.address}</span>
-            </div>
+            {store.name.active === 0 && 
+                <div className={styles.name} onClick={() => store.active(1, 'name')}>
+                    <span>{store.name.value}</span>
+                </div>
+            }
+            {store.name.active === 1 && 
+                <div className={styles.block__form}>
+                    <Input name="name" size="large_full" value={store.name.value}/>
+                </div>
+            }
+            {store.address.active === 0 && 
+                <div className={styles.address} onClick={() => store.active(1, 'address')}>
+                    <span>{store.address.value}</span>
+                </div>
+            }
+            {store.address.active === 1 && 
+                <div className={styles.block__form}>
+                    <Input name="address" size="middle_full" value={store.address.value}/>
+                </div>
+            }
             <div className={styles.sity}>
                 <img src={flag} alt="" />
                 <span>English</span>
             </div>
             <div className={styles.tag}>
                 <div className={styles.tag__list}>
-                    {store.tag.map((item, i) => (
+                    {store.tag.value.map((item, i) => (
                         <div key={i} className={styles.tag__item}>
                             {item.name}
                             <span onClick={() => store.removeTag(i)} className={styles.tag__itemRemove}>
@@ -32,10 +42,10 @@ function Info (){
                             </span>
                         </div>
                     ))}
-                    {activeTag === 0 && 
-                        <div className={styles.tag__plus} onClick={() => setActiveTag(1)}>+</div>
+                    {store.tag.active === 0 && 
+                        <div className={styles.tag__plus} onClick={() => store.active(1, 'tag')}>+</div>
                     }
-                    {activeTag === 1 && 
+                    {store.tag.active === 1 && 
                         <div className={styles.tag__form}>
                              <Input name="tag" size="small" value=''/>
                         </div>

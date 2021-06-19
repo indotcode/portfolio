@@ -1,0 +1,76 @@
+.block{
+    position: relative;
+}
+
+.input{
+    border: 0;
+    border-bottom: 2px #333 solid;
+    background: #0000000f;
+    font-family: -apple-system, 'Roboto', sans-serif;
+}
+
+.input:focus{
+    background: #0000000f;
+    outline: 0;
+}
+
+.small{
+    padding: 4px 30px 4px 2px;
+    font-size: 14px;
+}
+
+.small_full{
+    width: calc(100% - 32px);
+    padding: 4px 30px 4px 2px;
+    font-size: 14px;
+}
+
+.middle{
+    padding: 8px 30px 6px 2px;
+    font-size: 16px;
+}
+
+.middle_full{
+    width: calc(100% - 32px);
+    padding: 8px 30px 6px 2px;
+    font-size: 16px;
+}
+
+
+.large{
+    padding: 11px 30px 9px 2px;
+    font-size: 20px;
+}
+
+.large_full{
+    width: calc(100% - 32px);
+    padding: 8px 30px 6px 2px;
+    font-size: 40px;
+}
+
+.button{
+    position: absolute;
+    cursor: pointer;
+    right: 8px;
+    top: calc(49% - 8px);
+    transition: .3s;
+}
+
+.button:hover{
+    opacity: .8;
+    transition: .3s;
+}
+
+.ok{
+    background: url('./../images/ok.png') #0000000f;
+    width: 16px;
+    height: 16px;
+    border: 0;
+}
+
+.error{
+    background: url('./../images/error.png') #0000000f;
+    width: 16px;
+    height: 16px;
+    border: 0;
+}

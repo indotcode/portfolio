@@ -1,6 +1,6 @@
 import {observer} from 'mobx-react';
 import React from 'react';
-import styles from './Input.module.css';
+import styles from './Input.module.scss';
 import store from '../store/index';
 
 class Input extends React.Component{
@@ -15,9 +15,24 @@ class Input extends React.Component{
         }
     }
 
+    isValid(string) {
+        let spec = '$%#*()@[]'.split('');
+        let stringRes = string.split('');
+        let n = 0;
+        stringRes.forEach(s => {
+            if(spec.indexOf(s) !== -1){
+                n = 1;
+            }
+        });
+        return n === 0    
+    }
+
     onInput = () => (event) => {
-        let value = event.target.value;
+        const value = event.target.value;
         let button = 'ok';
+        if(!this.isValid(value)){
+            button = 'error';
+        }
         this.setState((state) => {
             state.value = value;
             state.buttonActive = state.valueDefault !== value ? 1 : 0;
@@ -31,14 +46,24 @@ class Input extends React.Component{
             store.saveInput(this.props.name, this.state.value);
         }
         if(this.state.button === 'error'){
-            
+            let button = 'ok';
+            const value = this.state.value.substring(0, this.state.value.length - 1);
+            if(!this.isValid(value)){
+                button = 'error';
+            }
+            this.setState((state) => {
+                state.value = value;
+                state.buttonActive = state.valueDefault !== state.value ? 1 : 0;
+                state.button = button;
+                return state;
+            })
         }
     }
 
     render() {
         return (
             <div className={styles.block}>
-            <input onInput={this.onInput()} type="text" className={[styles.input, styles[this.props.size]].join(' ')} value={this.state.value}/>
+                <input onInput={this.onInput()} type="text" className={[styles.input, styles[this.props.size], styles[this.state.width]].join(' ')} value={this.state.value}/>
                 {this.state.buttonActive === 1 &&
                     <button onClick={this.onClick()} className={[styles.button, styles[this.state.button]].join(' ')}></button>
                 }
