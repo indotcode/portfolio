@@ -25,15 +25,14 @@ class Store {
 
     saveInput(name, string){
         if(name === 'tag'){
-            this.tag.push({name: string, yesr: 0})
+            console.log(name);
+            // this.tag.push({name: string, yesr: 0})
         }
     }
     
     removeTag(id){
         this.tag.splice(id, 1)
     }
-
-    edit
 }
 
 export default new Store();

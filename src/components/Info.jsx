@@ -9,6 +9,7 @@ function Info (){
     
     const [activeTag, setActiveTag] = useState(0);
 
+
     return (
         <div className={styles.block}>
             <div className={styles.name}>       
@@ -36,7 +37,7 @@ function Info (){
                     }
                     {activeTag === 1 && 
                         <div className={styles.tag__form}>
-                             <Input/>
+                             <Input name="tag" size="small" value=''/>
                         </div>
                     }
                 </div>

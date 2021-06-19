@@ -1,3 +1,50 @@
 .block{
-    
+    position: relative;
+}
+
+.input{
+    border: 0;
+    border-bottom: 2px #333 solid;
+    background: rgba(0, 0, 0, 0.06);
+    font-family: -apple-system, 'Roboto', sans-serif;
+}
+
+.input:focus{
+    background: rgba(0, 0, 0, 0.06);
+    outline: 0;
+}
+
+.small{
+    padding: 5px 30px 4px 5px;
+    font-size: 14px;
+}
+
+.middle{
+    padding: 8px;
+    font-size: 16px;
+}
+
+.large{
+    padding: 10px;
+    font-size: 20px;
+}
+
+.button{
+    position: absolute;
+    cursor: pointer;
+    right: 8px;
+    top: calc(49% - 8px);
+    transition: .3s;
+}
+
+.button:hover{
+    opacity: .8;
+    transition: .3s;
+}
+
+.ok{
+    background-image: url('./../images/ok.png');
+    width: 16px;
+    height: 16px;
+    border: 0;
 }
