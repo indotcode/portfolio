@@ -3,7 +3,6 @@ import store from '../store/index';
 import styles from './Portfolio.module.scss';
 
 function Portfolio(){
-    console.log(store.portfolio)
     return (
         <div>
             <h2>Portfolio</h2>

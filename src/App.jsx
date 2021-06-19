@@ -3,7 +3,8 @@ import Logo from './components/Logo';
 import Info from './components/Info';
 import Print from './components/Print';
 import Portfolio from './components/Portfolio';
-import Experience from './components/Experience';
+import Experience from './components/Experience/Experience';
+import Code from './components/Code';
 
 function App() {
     return (
@@ -33,6 +34,9 @@ function App() {
                         </div>
                         <div className="wrapCel wrapCel_3">
                             <Experience/>
+                        </div>
+                        <div className="wrapCel wrapCel_3">
+                            <Code/>
                         </div>
                     </div>
                 </div>

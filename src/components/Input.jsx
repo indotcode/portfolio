@@ -60,10 +60,16 @@ class Input extends React.Component{
         }
     }
 
+    onKeyInput = () => (event) => {
+        if(event.charCode === 13 && this.state.button === 'ok'){
+            store.saveInput(this.props.name, this.state.value);
+        }
+    }
+
     render() {
         return (
             <div className={styles.block}>
-                <input onInput={this.onInput()} type="text" className={[styles.input, styles[this.props.size], styles[this.state.width]].join(' ')} value={this.state.value}/>
+                <input onKeyPress={this.onKeyInput()} onInput={this.onInput()} type="text" className={[styles.input, styles[this.props.size], styles[this.state.width]].join(' ')} value={this.state.value}/>
                 {this.state.buttonActive === 1 &&
                     <button onClick={this.onClick()} className={[styles.button, styles[this.state.button]].join(' ')}></button>
                 }
