@@ -5,6 +5,10 @@ import Print from './components/Print';
 import Portfolio from './components/Portfolio';
 import Experience from './components/Experience/Experience';
 import Code from './components/Code';
+import Availability from './components/Availability';
+import Feedback from './components/Feedback';
+import Map from './components/Map';
+import store from './store';
 
 function App() {
     return (
@@ -37,6 +41,17 @@ function App() {
                         </div>
                         <div className="wrapCel wrapCel_3">
                             <Code/>
+                        </div>
+                        <div className="wrapCel wrapCel_3">
+                            <Availability/>
+                        </div>
+                        {store.feedback.map((item, i) => (
+                            <div key={i} className="wrapCel wrapCel_3">
+                                <Feedback name={item.name} text={item.text}/>
+                            </div>
+                        ))}
+                        <div className="wrapCel wrapCel_6">
+                            <Map/>
                         </div>
                     </div>
                 </div>

@@ -12,6 +12,7 @@
     font-weight: 500;
     cursor: default;
     width: calc(100% - 4px);
+    height: 47px;
 }
 
 .name:hover{
@@ -112,8 +113,7 @@
     margin: 4px;
 }
 
-
-@media screen and (max-width: 425px){
+@media screen and (max-width: 627px){
     .block{
         width: unset;
     }

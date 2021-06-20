@@ -73,6 +73,15 @@ class Input extends React.Component{
                 {this.state.buttonActive === 1 &&
                     <button onClick={this.onClick()} className={[styles.button, styles[this.state.button]].join(' ')}></button>
                 }
+                {this.state.button === 'error' && this.props.name === 'name' &&
+                    <div className={styles.errorText}>Error Name</div>
+                }
+                {this.state.button === 'error' && this.props.name === 'address' &&
+                    <div className={styles.errorText}>Error Address</div>
+                }
+                {this.state.button === 'error' && this.props.name === 'tag' &&
+                    <div className={styles.errorText}>Error Tag</div>
+                }
             </div>
         )
     }

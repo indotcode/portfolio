@@ -1,38 +1,36 @@
+import React from "react";
 import { observer } from "mobx-react";
-import AceEditor from "react-ace";
-import styles from './Code.module.scss';
-import "ace-builds/src-noconflict/mode-html";
-import "ace-builds/src-noconflict/theme-crimson_editor";
-import "ace-builds/src-noconflict/ext-language_tools";
 
+import AceEditor from "react-ace";
+import "ace-builds/src-noconflict/mode-html";
+import "ace-builds/src-noconflict/theme-tomorrow";
+import "ace-builds/src-noconflict/ext-language_tools";
+import './Code.scss';
+import store from "../store";
+
+
+
+
+//tomorrow
 
 function Code() {
-    const onChange = (newValue) => {
-        console.log("change", newValue);
-      }
     return (
         <div>
             <h2>Sample code</h2>
             <AceEditor
-                placeholder="Placeholder Text"
+                placeholder=""
                 mode="html"
-                theme="crimson_editor"
+                theme="tomorrow"
                 name="blah2"
-                height="200px"
+                height="170px"
                 width="100%"
-                className={styles.editor}
-                // onLoad={this.onLoad}
-                // onChange={this.onChange}
+                className="aseEditor"
+                // onChange={store.codeChange()}
                 fontSize={16}
                 showPrintMargin={true}
                 showGutter={true}
                 highlightActiveLine={false}
-                value={`<div class='golden-grid'> 
-    <div style='grid-area:
-    11 / 1 / span 10 / 
-    span 12;'>
-    </div> 
-</div>`}
+                value={store.code}
                 setOptions={{
                 enableBasicAutocompletion: false,
                 enableLiveAutocompletion: true,

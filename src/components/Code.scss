@@ -1,0 +1,35 @@
+.aseEditor{
+    margin-top: 30px;
+    background-color: #f0f1f3;
+    border-radius: 8px;
+}
+.ace-tomorrow{
+    .ace_entity.ace_other{
+        &.ace_attribute-name{
+            color: #660000;
+        }
+    }
+    .ace_string.ace_attribute-value{
+        color: #00a509;
+    }
+    .ace_meta{
+        &.ace_tag-open,
+        &.ace_tag-close,
+        &.ace_end-tag-open{
+            color: #000;
+        }
+    }
+    .ace_gutter-cell{
+        padding-left: 15px;
+    }
+    .ace_gutter{
+        background: #f0f1f3;
+        padding: 10px 0;
+    }
+    .ace_scroller{
+        padding: 10px;
+    }
+    .ace_gutter-cell.ace_gutter-active-line{
+        background: #f0f1f3;
+    } 
+}

@@ -19,8 +19,19 @@ class Store {
 
     address = {
         active: 0,
-        value: 'Portland, Oregon, USA'
+        value: 'Осинники Победы 54'
     };
+
+    location = {
+        zoom: 14,
+        geo: {
+            lat: 0,
+            lng: 0
+        },
+        active: 0
+    }
+
+    apiKey = 'AIzaSyAsHP7eRW47kbqjbl61fVLV1QY7OdJdTYM';
 
     portfolio = [
         {
@@ -41,17 +52,69 @@ class Store {
         }
     ]
 
+    code = `<div class='golden-grid'> 
+    <div style='grid-area: 
+    11 / 1 / span 10 / span 
+    12;'>
+    </div> 
+</div>`;
+
+    feedback = [
+        {
+            name: 'The Most Amaizing...',
+            text: 'The only true wisdom is in knowing you know nothing...'
+        },
+        {
+            name: 'In clients I look for...',
+            text: 'There is only one good, knowledge, and one evil, ignorance.'
+        }
+    ]
+
     constructor() {
         makeObservable(this, {
             tag: observable,
             name: observable,
             address: observable,
             portfolio: observable,
+            code: observable,
+            location: observable,
+            apiKey: observable,
             active: action,
             saveInput: action,
             removeTag: action,
-            yearSave: action
+            yearSave: action,
+            codeChange: action
+        });
+        this.locationInit(this.address.value);
+        this.tagSort(this.tag.value);
+    }
+
+    tagSort(tag){
+        return tag.sort((a, b) => {
+            let x = Number(a.year.replace(',', '.'));
+            let z = Number(b.year.replace(',', '.'));
+            return x > z ? -1 : 1;
         })
+    }
+
+    locationInit(string){
+        this.location.active = 0;
+        fetch('https://maps.googleapis.com/maps/api/geocode/json?address='+string+'&key='+this.apiKey)
+            .then(response => response.json())
+            .then(result => {
+                const geometry = result.results[0];
+                this.location = {
+                    zoom: geometry.address_components.length * 2 + 3,
+                    geo: geometry.geometry.location,
+                    active: 1
+                }
+            }).catch(e => {
+                
+            });
+    }
+
+    codeChange = () => (value) =>{
+        this.code = value;
     }
 
     active(n, name){
@@ -59,14 +122,17 @@ class Store {
     }
 
     saveInput(name, string){
-        if(name === 'tag'){
-            this.tag.value.push({name: string, year: '0'})
-        }
-        if(name === 'name'){
-            this.name.value = string;
-        }
-        if(name === 'address'){
-            this.address.value = string;
+        if(string !== ''){
+            if(name === 'tag'){
+                this.tag.value.push({name: string, year: '0'})
+            }
+            if(name === 'name'){
+                this.name.value = string;
+            }
+            if(name === 'address'){
+                this.address.value = string;
+                this.locationInit(string);
+            }
         }
         this.active(0, name);
     }
@@ -75,9 +141,9 @@ class Store {
         this.tag.value.splice(id, 1)
     }
 
-    yearSave = (id) => (event) => {
-        let value = event.target.value;
-        this.tag.value[id].year = this._maskYear(value);
+    yearSave = (id, value) => {
+        this.tag.value[id].year = value;
+        this.tagSort(this.tag.value);
     }
 
     _maskYear(string){
